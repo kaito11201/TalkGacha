@@ -68,10 +68,13 @@ if __name__ == "__main__":
   
   driver = setting_driver()
   
-  for _ in range(REFRESH_NUM):
+  for num in range(REFRESH_NUM):
     text = get_text(driver)
     output_file(driver, text)
     speak_bouyomi(text, VOICE, VOLUME, SPEED, TONE)
+    if num == REFRESH_NUM - 1:
+      speak_bouyomi("これが最後のお題になります。", VOICE, VOLUME, SPEED, TONE)
+      
     time.sleep(REFRESH_INTERVAL)
     driver.refresh()
     
